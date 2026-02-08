@@ -17,6 +17,11 @@ import { Link } from '@inertiajs/vue3';
 import { BookOpen, Folder, LayoutGrid } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 
+import { usePage } from '@inertiajs/vue3';
+const page = usePage()
+const user = page.props.auth.user
+
+
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
@@ -25,18 +30,18 @@ const mainNavItems: NavItem[] = [
     },
 ];
 
-const footerNavItems: NavItem[] = [
-    {
-        title: 'Github Repo',
-        href: 'https://github.com/laravel/vue-starter-kit',
-        icon: Folder,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#vue',
-        icon: BookOpen,
-    },
-];
+if (user.role == 2) {
+    mainNavItems.length = 0;
+    mainNavItems.push(
+        {
+            title: 'Job Listings',
+            href: '/employer/index',
+            icon: LayoutGrid,
+        },
+    );
+}
+
+
 </script>
 
 <template>
@@ -56,11 +61,6 @@ const footerNavItems: NavItem[] = [
         <SidebarContent>
             <NavMain :items="mainNavItems" />
         </SidebarContent>
-
-        <SidebarFooter>
-            <NavFooter :items="footerNavItems" />
-            <NavUser />
-        </SidebarFooter>
     </Sidebar>
     <slot />
 </template>
