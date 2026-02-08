@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployerController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -25,9 +26,11 @@ Route::middleware(['auth', 'applicant'])->group(function () {
 });
 
 Route::middleware(['auth', 'employer'])->group(function () {
-    Route::get('/employer/index', function () {
-        return Inertia::render('employer/Index');
-    })->name('employer.index');
+    // Route::get('/employer/index', function () {
+    //     return Inertia::render('employer/Index');
+    // })->name('employer.index');
+    Route::get('/employer/index', [EmployerController::class, 'index'])->name('employer.index');
+    Route::post('/employer/store', [EmployerController::class, 'store'])->name('employer.store');
 
 });
 

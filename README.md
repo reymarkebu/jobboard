@@ -67,6 +67,6 @@ Clear Laravel caches
 ----
 Update the routes list
 - php artisan ziggy:generate resources/js/ziggy.ts --types
-- php artisan route:list
-- php artisan route:clear
-- php artisan route:cache
+- docker compose exec app php artisan route:list
+- docker compose exec app php artisan route:clear
+- docker compose exec app php artisan route:cache
