@@ -41,6 +41,10 @@ import {
   TableRow,
 } from '@/components/ui/table';
 
+//--- Import DataTable Component ---
+import { columns } from './components/columns';
+import DataTable from './components/DataTable.vue';
+
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -102,6 +106,14 @@ function createJobOpening(values: any) {
     });
 
 
+
+}
+
+function handleEdit(jobs: object) {
+
+}
+
+function handleDelete(jobs: object) {
 
 }
 
@@ -168,7 +180,7 @@ function createJobOpening(values: any) {
                 </Form>
 
                 <!-- Table -->
-                <Table>
+                <!-- <Table>
                     <TableCaption>A list of your recent job openings.</TableCaption>
                     <TableHeader>
                         <TableRow>
@@ -178,14 +190,16 @@ function createJobOpening(values: any) {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        <!-- Example rows -->
                         <TableRow v-for="job in props.jobOpenings" :key="job.id">
                             <TableCell>{{ job.title }}</TableCell>
                             <TableCell>{{ job.description }}</TableCell>
                             <TableCell>{{ job.created_at }}</TableCell>
                         </TableRow>
                     </TableBody>
-                </Table>
+                </Table> -->
+                <div class="container py-8 mx-auto">
+                    <DataTable :columns="columns" :data="props.jobOpenings" :meta="{ edit: handleEdit, delete: handleDelete }" />
+                </div>
             </div>
         </div>
     </AppLayout>
