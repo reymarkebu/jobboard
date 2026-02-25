@@ -1,3 +1,11 @@
+The system has 3 users (Admin, Employer, Applicant). 
+
+Flow of the system:
+    The Employer creates jobs (Pending).
+    The Admin will review the job posting (Approved, Rejected).
+    Once approved, the Applicant can view the job posting.
+
+
 How to Run the Project
 
 1. Build and start and end containers
